@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:persona/models/Person.dart';
-import 'package:flutter/widgets.dart';
 
-// ignore: must_be_immutable
 class PersonRow extends StatefulWidget {
-  Person person;
-  int id;
+  final Person person;
+  final int id;
 
   PersonRow({
     this.person,
