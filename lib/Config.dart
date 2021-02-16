@@ -3,14 +3,15 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 
-class Config{
+class Config {
   final URL url;
   Config(this.url);
   String get baseUrl {
-    return Platform.isAndroid?url.android:url.iOS;
+    return Platform.isAndroid ? url.android : url.iOS;
   }
 }
-class URL{
+
+class URL {
   final String android;
   final String iOS;
 
@@ -18,9 +19,8 @@ class URL{
 }
 
 Future<Config> getConfig(String env) async {
-  final contents=await rootBundle.loadString(
-    'assets/config/${env}.json'
-  );
+  final contents = await rootBundle.loadString('assets/config/$env.json');
   final jsonData = jsonDecode(contents);
-  return Config(URL(jsonData['baseUrl']['android'],jsonData['baseUrl']['iOS']));
+  return Config(
+      URL(jsonData['baseUrl']['android'], jsonData['baseUrl']['iOS']));
 }

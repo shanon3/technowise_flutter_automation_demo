@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:persona/main.dart';
 import 'package:persona/models/Person.dart';
 import 'package:persona/services/PersonService.dart';
 import 'package:persona/view/PersonPage.dart';
 import 'package:persona/view/PersonaRow.dart';
 
 class PersonListPage extends StatefulWidget {
-  PersonListPage({Key key, this.title}) : super(key: key){
-  }
+  PersonListPage({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -51,9 +48,15 @@ class _PersonListPageState extends State<PersonListPage> {
 
     // Call the getJSONData() method when the app initializes
   }
-  clicked(int pos){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonPage(data[pos],"Details of "+data[pos].name)));
+
+  clicked(int pos) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                PersonPage(data[pos], "Details of " + data[pos].name)));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,21 +65,21 @@ class _PersonListPageState extends State<PersonListPage> {
       ),
       // Create a Listview and load the data when available
       body: ListView.builder(
-          itemCount: data == null ? 0 : data.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 100.0,
-              child: InkWell(
-                onTap: ()=>clicked(index),
-                child: Container(
-                  child: PersonRow(data[index],
-                      id: index),
-                  // added padding
+        itemCount: data == null ? 0 : data.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            height: 100.0,
+            child: InkWell(
+              onTap: () => clicked(index),
+              child: Container(
+                child: PersonRow(person: data[index], id: index),
+                // added padding
 //                              padding: const EdgeInsets.all(15.0),
-                ),
-              )
-            );
-          }),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

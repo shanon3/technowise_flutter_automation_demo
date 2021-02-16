@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:persona/Config.dart';
-import 'package:persona/view/HomePage.dart';
+import 'package:persona/config.dart';
 
+// ignore: must_be_immutable
 class PersonaApp extends StatelessWidget {
   static Future<Config> config;
   String env;
-  StatefulWidget startScreen;
-  PersonaApp(this.env,this.startScreen);
+  Widget startScreen;
+
+  PersonaApp(
+    this.env,
+    this.startScreen,
+  );
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'package:persona/models/Person.dart';
-import 'package:persona/services/PersonService.dart';
 import 'package:persona/view/PersonListPage.dart';
-import 'package:persona/view/PersonPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -26,16 +22,22 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   _HomePageState();
 
-  clicked(){
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonListPage(title: "Known Persons")));
+  void clicked() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PersonListPage(title: "Known Persons"),
+      ),
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("See all Persons"),
-      ),
-      // Create a Listview and load the data when available
+        appBar: AppBar(
+          title: Text("See all Persons"),
+        ),
+        // Create a Listview and load the data when available
         body: Center(
           // Center is a layout widget. It takes a single child and positions it
           // in the middle of the parent.
@@ -57,20 +59,18 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               InkWell(
-              onTap: ()=>clicked(),
-              child: Container(
-                child:Text(
-                  'See All Persons',
-                  style: TextStyle(
-                      fontSize: 18.0, color: Colors.lightBlueAccent
+                onTap: () => clicked(),
+                child: Container(
+                  child: Text(
+                    'See All Persons',
+                    style: TextStyle(
+                        fontSize: 18.0, color: Colors.lightBlueAccent),
+                    key: ValueKey("persona"),
                   ),
-                  key: ValueKey("persona"),
                 ),
-              ),
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 }
