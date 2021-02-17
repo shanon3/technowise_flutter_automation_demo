@@ -52,7 +52,6 @@ class _PersonListPageState extends State<PersonListPage> {
               onTap: () => clicked(index),
               child: Container(
                 child: PersonRow(person: data[index], id: index),
-                // padding: const EdgeInsets.all(15.0),
               ),
             ),
           );

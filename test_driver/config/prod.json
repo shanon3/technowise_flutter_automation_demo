@@ -1,0 +1,6 @@
+{
+  "baseUrl": {
+    "android": "https://atmnk-swapi.herokuapp.com/api",
+    "iOS": "https://atmnk-swapi.herokuapp.com/api"
+  }
+}

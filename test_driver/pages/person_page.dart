@@ -11,6 +11,6 @@ class PersonPages {
 
   Future<void> tapSeeAllPersonButton() async => driver.tap(seeAllPersonButton);
 
-  Future<void> tapPersonDetailByPersonName(String key) async =>
-      driver.tap(find.byValueKey(key));
+  Future<void> tapPersonDetailByText(String key) async =>
+      driver.tap(find.text(key));
 }

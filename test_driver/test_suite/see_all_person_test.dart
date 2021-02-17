@@ -1,6 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
+import '../api/person_api_impl.dart';
+import '../model/person_model.dart';
 import '../pages/person_page.dart';
 
 void main() {
@@ -8,8 +12,13 @@ void main() {
     FlutterDriver driver;
 
     setUp(() async {
-      driver = await FlutterDriver.connect();
+      driver = await FlutterDriver.connect(printCommunication: true);
     });
+
+    int _randomNumber() {
+      Random rng = new Random();
+      return rng.nextInt(5);
+    }
 
     test(
       'should be able to click the button and see the list of person',
@@ -17,6 +26,21 @@ void main() {
         final PersonPages personPage = PersonPages(driver: driver);
         await Future.delayed(const Duration(seconds: 5));
         await personPage.tapSeeAllPersonButton();
+        await Future.delayed(const Duration(seconds: 10));
+      },
+      timeout: Timeout(
+        const Duration(minutes: 5),
+      ),
+    );
+
+    test(
+      'should be able to click one of the person',
+      () async {
+        final PersonPages personPage = PersonPages(driver: driver);
+        PersonApiImpl personApiImpl = PersonApiImpl();
+        List<PersonModel> data = await personApiImpl.getAllPerson();
+        await Future.delayed(const Duration(seconds: 5));
+        await personPage.tapPersonDetailByText(data[_randomNumber()].name);
         await Future.delayed(const Duration(seconds: 10));
       },
       timeout: Timeout(
