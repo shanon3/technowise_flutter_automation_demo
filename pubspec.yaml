@@ -26,10 +26,8 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
-  flutter_gherkin: ^1.0.4
-  flutter_gherkin_addons: ^0.1.5
-#  flutter_gherkin_addons:
-#    path: ../
+  flutter_gherkin: ^1.1.9
+  # flutter_gherkin_addons: ^0.1.6
   flutter_driver:
     sdk: flutter
   test: any
