@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:persona/Config.dart';
-import 'package:persona/view/HomePage.dart';
+import 'package:persona/config.dart';
 
 class PersonaApp extends StatelessWidget {
   static Future<Config> config;
-  String env;
-  StatefulWidget startScreen;
-  PersonaApp(this.env,this.startScreen);
+  final String env;
+  final Widget startScreen;
+
+  PersonaApp(
+    this.env,
+    this.startScreen,
+  );
 
   @override
   Widget build(BuildContext context) {

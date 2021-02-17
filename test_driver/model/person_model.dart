@@ -1,29 +1,22 @@
-class Person {
+class PersonModel {
   final String name;
   final String hairColor;
   final String skinColor;
   final String eyeColor;
 
-  Person({
+  PersonModel({
     this.name,
     this.hairColor,
     this.skinColor,
     this.eyeColor,
   });
 
-  factory Person.fromJson(Map<String, dynamic> json) {
-    return Person(
+  factory PersonModel.fromJson(Map<String, dynamic> json) {
+    return PersonModel(
       name: json['name'],
       hairColor: json['hair_color'],
       skinColor: json['skin_color'],
       eyeColor: json['eye_color'],
     );
   }
-
-  Map<String, dynamic> toJson() => {
-        'name': name,
-        'hair_color': hairColor,
-        'skin_color': skinColor,
-        'eye_color': eyeColor,
-      };
 }

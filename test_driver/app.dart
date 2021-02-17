@@ -1,7 +1,7 @@
 import 'package:flutter_driver/driver_extension.dart';
-import '../lib/main.dart' as app;
+import 'package:persona/main.dart' as app;
 
-void main() async {
+void main() {
   enableFlutterDriverExtension();
-  await app.main();
+  app.main();
 }
