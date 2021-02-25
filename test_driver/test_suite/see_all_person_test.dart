@@ -12,7 +12,10 @@ void main() {
     FlutterDriver driver;
 
     setUp(() async {
-      driver = await FlutterDriver.connect(printCommunication: true);
+      driver = await FlutterDriver.connect(
+        printCommunication: true,
+      );
+      print('setUp');
     });
 
     int _randomNumber() {
@@ -26,11 +29,22 @@ void main() {
         final PersonPages personPage = PersonPages(driver: driver);
         await Future.delayed(const Duration(seconds: 5));
         await personPage.tapSeeAllPersonButton();
-        await Future.delayed(const Duration(seconds: 10));
+        await Future.delayed(const Duration(seconds: 5));
+
+        String appBarTitle = await personPage.getAppBarText();
+
+        expect(
+          appBarTitle,
+          'List of Person',
+          reason: 'App Bar title does not match',
+        );
+
+        await Future.delayed(const Duration(seconds: 5));
       },
       timeout: Timeout(
         const Duration(minutes: 5),
       ),
+      tags: 'smoke'
     );
 
     test(
@@ -46,11 +60,13 @@ void main() {
       timeout: Timeout(
         const Duration(minutes: 5),
       ),
+      skip: true,
     );
 
     tearDown(() {
       if (driver != null) {
         driver.close();
+        print('tearDown');
       }
     });
   });

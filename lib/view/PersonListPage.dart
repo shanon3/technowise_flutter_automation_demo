@@ -41,7 +41,10 @@ class _PersonListPageState extends State<PersonListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("See all Persons"),
+        title: Text(
+          "List of Person",
+          key: ValueKey('list_of_person_app_bar_key'),
+        ),
       ),
       body: ListView.builder(
         itemCount: data == null ? 0 : data.length,

@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("See all Persons"),
+        title: Text("See all Persons Bar"),
       ),
       // Create a Listview and load the data when available
       body: Center(
